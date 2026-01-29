@@ -9,12 +9,12 @@ Accept: application/json
 
 ### Get All Books
 GET http://localhost:8000/api/books
-Authorization: Bearer 1|zLupm0rOlprvRbHbKh8k807lTDH9cZOGbEhfUoGXf1bf4dfa
+Authorization: Bearer 2|yGG24gCsStDhNrKMvDXlac9VAm00vfYk1syNTSgX3b616755
 Accept: application/json
 
 ### Add New Book
 POST http://localhost:8000/api/books
-Authorization: Bearer 1|zLupm0rOlprvRbHbKh8k807lTDH9cZOGbEhfUoGXf1bf4dfa
+Authorization: Bearer 2|yGG24gCsStDhNrKMvDXlac9VAm00vfYk1syNTSgX3b616755
 Content-Type: application/json
 Accept: application/json
 
@@ -26,10 +26,20 @@ Accept: application/json
 
 ### Pinjam Buku 
 POST http://localhost:8000/api/borrow
-Authorization: Bearer 1|zLupm0rOlprvRbHbKh8k807lTDH9cZOGbEhfUoGXf1bf4dfa
+Authorization: Bearer 2|yGG24gCsStDhNrKMvDXlac9VAm00vfYk1syNTSgX3b616755
 Content-Type: application/json
 Accept: application/json
 
 {
     "book_id": 1
+}
+
+### Kembali Buku
+POST http://localhost:8000/api/return
+Authorization: Bearer 2|yGG24gCsStDhNrKMvDXlac9VAm00vfYk1syNTSgX3b616755
+Content-Type: application/json
+Accept: application/json
+
+{
+    "transaction_id": 2
 }
