@@ -9,33 +9,50 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        $user = User::where('email', $request->email)->first();
-
-        // Cek user & password
-        if (! $user || ! Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'message' => 'Email atau password salah!'
-            ], 401);
-        }
-
-        // Buat token berdasarkan role user
-        $token = $user->createToken('auth_token')->plainTextToken;
-
+    public function login(Request $request) {
+    // 1. Cek apakah Request kosong atau tidak
+    if (!$request->has('email') || !$request->has('password')) {
         return response()->json([
-            'message' => 'Login Berhasil',
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user // Mengirim data user termasuk role
-        ]);
+            'message' => 'Data Request Kosong! Cek baris kosong di REST Client kamu.',
+            'debug_input' => $request->all()
+        ], 400);
     }
 
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    // 2. Debug jika User tidak ketemu
+    if (!$user) {
+        return response()->json([
+            'message' => 'Email tidak terdaftar!',
+            'email_yang_dikirim' => $request->email
+        ], 401);
+    }
+
+    // 3. Debug Password (ini yang krusial)
+    if (!Hash::check($request->password, $user->password)) {
+        return response()->json([
+            'message' => 'Password salah bro!',
+            'debug' => [
+                'password_input' => $request->password,
+                'password_di_db' => $user->password, // Ini akan menunjukkan apakah password di DB itu hash atau plain
+                'apakah_cocok' => Hash::check($request->password, $user->password)
+            ]
+        ], 401);
+    }
+
+    $token = $user->createToken('auth_token')->plainTextToken;
+
+    return response()->json([
+        'access_token' => $token,
+        'token_type' => 'Bearer',
+        'user' => $user
+    ]);
+}
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();

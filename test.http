@@ -1,0 +1,35 @@
+POST http://localhost:8000/api/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "admin@mail.com",
+    "password": "password"
+}
+
+### Get All Books
+GET http://localhost:8000/api/books
+Authorization: Bearer 1|zLupm0rOlprvRbHbKh8k807lTDH9cZOGbEhfUoGXf1bf4dfa
+Accept: application/json
+
+### Add New Book
+POST http://localhost:8000/api/books
+Authorization: Bearer 1|zLupm0rOlprvRbHbKh8k807lTDH9cZOGbEhfUoGXf1bf4dfa
+Content-Type: application/json
+Accept: application/json
+
+{
+    "judul": "Filosofi Teras",
+    "penulis": "Henry Manampiring",
+    "stok": 12
+}
+
+### Pinjam Buku 
+POST http://localhost:8000/api/borrow
+Authorization: Bearer TOKEN_SISWA_DISINI
+Content-Type: application/json
+Accept: application/json
+
+{
+    "book_id": 1
+}
