@@ -26,7 +26,7 @@ Accept: application/json
 
 ### Pinjam Buku 
 POST http://localhost:8000/api/borrow
-Authorization: Bearer TOKEN_SISWA_DISINI
+Authorization: Bearer 1|zLupm0rOlprvRbHbKh8k807lTDH9cZOGbEhfUoGXf1bf4dfa
 Content-Type: application/json
 Accept: application/json
 
