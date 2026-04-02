@@ -39,7 +39,8 @@ class TransactionController extends Controller
             'sisa_stok' => $book->stok
         ]);
     }
-public function returnBook(Request $request)
+
+    public function returnBook(Request $request)
 {
     $request->validate([
         'transaction_id' => 'required|exists:transactions,id',
