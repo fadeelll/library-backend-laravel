@@ -9,10 +9,6 @@ class Book extends Model
 {
     use HasFactory;
 
-    // Tambahkan baris ini untuk memberi izin kolom mana saja yang boleh diisi
-    protected $fillable = [
-        'judul',
-        'penulis',
-        'stok'
-    ];
+    // Tambahkan kategori dan deskripsi di sini agar bisa disimpan
+   protected $fillable = ['judul', 'penulis', 'stok', 'kategori', 'deskripsi', 'cover_image'];
 }
