@@ -8,15 +8,15 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
-    public function run(): void {
-    $this->call([
-        UserSeeder::class,
-        BookSeeder::class,
-    ]);
-}
+    public function run(): void
+    {
+        // Panggil seeder lain di sini
+        $this->call([
+            UserSeeder::class,
+            BookSeeder::class,
+        ]);
+    }
 }

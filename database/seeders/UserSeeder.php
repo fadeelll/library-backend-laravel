@@ -11,22 +11,20 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void 
+    public function run(): void
     {
-        // Data Admin
         User::create([
             'name' => 'Admin Perpus',
             'email' => 'admin@mail.com',
-            'password' => 'password', // Plain text karena di Model sudah ada 'hashed' cast
+            'password' => Hash::make('password'),
             'role' => 'admin',
         ]);
 
-        // Data Siswa
         User::create([
             'name' => 'Siswa Ganteng',
             'email' => 'siswa@mail.com',
-            'password' => 'password', // Samakan agar tidak bingung saat login
+            'password' => Hash::make('password'),
             'role' => 'siswa',
         ]);
-    } // Penutup fungsi run
-} // Penutup class UserSeeder
+    }
+}

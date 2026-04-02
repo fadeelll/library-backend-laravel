@@ -21,4 +21,4 @@ class BookSeeder extends Seeder
             'stok' => 5,
         ]);
     }
-} // Pastikan hanya ditutup dengan kurung kurawal class, tanpa koma
+}

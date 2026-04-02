@@ -1,3 +1,4 @@
+### Login Admin
 POST http://localhost:8000/api/login
 Content-Type: application/json
 Accept: application/json
@@ -7,14 +8,24 @@ Accept: application/json
     "password": "password"
 }
 
+### Login Siswa
+POST http://localhost:8000/api/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "siswa@mail.com",
+    "password": "password"
+}
+
 ### Get All Books
 GET http://localhost:8000/api/books
-Authorization: Bearer 2|yGG24gCsStDhNrKMvDXlac9VAm00vfYk1syNTSgX3b616755
+Authorization: Bearer 6|7fNR5Ct9xMTW3OZfIGmzM5iTTzFft6zIpFqL34WBe6317d7f
 Accept: application/json
 
 ### Add New Book
 POST http://localhost:8000/api/books
-Authorization: Bearer 2|yGG24gCsStDhNrKMvDXlac9VAm00vfYk1syNTSgX3b616755
+Authorization: Bearer 6|7fNR5Ct9xMTW3OZfIGmzM5iTTzFft6zIpFqL34WBe6317d7f
 Content-Type: application/json
 Accept: application/json
 
@@ -23,10 +34,9 @@ Accept: application/json
     "penulis": "Henry Manampiring",
     "stok": 12
 }
-
-### Pinjam Buku 
+### Pinjam Buku
 POST http://localhost:8000/api/borrow
-Authorization: Bearer 2|yGG24gCsStDhNrKMvDXlac9VAm00vfYk1syNTSgX3b616755
+Authorization: Bearer 7|D616e3fROMt6IEoQxcsuDmAEa7FH1qIAoTMF1ZhC3baadf7c
 Content-Type: application/json
 Accept: application/json
 
@@ -36,7 +46,7 @@ Accept: application/json
 
 ### Kembali Buku
 POST http://localhost:8000/api/return
-Authorization: Bearer 2|yGG24gCsStDhNrKMvDXlac9VAm00vfYk1syNTSgX3b616755
+Authorization: Bearer 7|D616e3fROMt6IEoQxcsuDmAEa7FH1qIAoTMF1ZhC3baadf7c
 Content-Type: application/json
 Accept: application/json
 
